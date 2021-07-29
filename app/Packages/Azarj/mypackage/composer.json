@@ -1,0 +1,17 @@
+{
+    "name": "azar.j/src",
+    "description": "simple packeg example",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "AzarJ\\Src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Azar",
+            "email": "noreplay@users.com"
+        }
+    ],
+    "require": {}
+}

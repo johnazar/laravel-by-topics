@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Azarj\mypackage\Hello;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     define('LARAVEL_END', microtime(true));
+    // $hello = new Hello();
+    // echo $hello->hi();
     // load time
     // echo LARAVEL_END - LARAVEL_START;
     // check loaded services
     // dd(app());
-    return view('welcome');
+    // return view('welcome');
 });
