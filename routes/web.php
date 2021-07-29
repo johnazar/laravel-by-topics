@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    //check loaded services
-    //dd(app());
+    define('LARAVEL_END', microtime(true));
+    // load time
+    // echo LARAVEL_END - LARAVEL_START;
+    // check loaded services
+    // dd(app());
     return view('welcome');
 });
