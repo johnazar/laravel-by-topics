@@ -40,4 +40,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Access attributes in camelCase foramt 
+     * first_name => firstName.
+     */
+    public function getAttribute($key) {
+        if (array_key_exists($key, $this->relations)) {
+            return parent::getAttribute($key);
+        } else {
+            return parent::getAttribute(Str::snake($key));
+        }
+    }
+
+    public function setAttribute($key, $value) {
+        return parent::setAttribute(Str::snake($key), $value);
+    }
 }
