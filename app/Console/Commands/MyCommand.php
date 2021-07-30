@@ -37,6 +37,33 @@ class MyCommand extends Command
      */
     public function handle()
     {
+        // input
+        $customInput = $this->ask('type any things to continue');
+        echo 'you typed: '.$customInput. PHP_EOL;
+        // password
+        $customPass = $this->secret('Password input demo');
+        echo 'your password: '. str_repeat('*',strlen($customPass)). PHP_EOL;
+        // confirmation
+        $confirmation = $this->confirm('do you confirm?');
+        echo ($confirmation) ? 'confirmed' : 'not confirmed' ;
+        echo PHP_EOL;
+
+        // autocomplate
+        $country = $this->anticipate('Where are you from?',['USA','UAE','Canad','Japan']);
+        echo "you are from {$country}" . PHP_EOL;
+        
+        // select
+        $backend = $this->choice('favourite language',['PHP','Python','JS']);
+        echo "you choosed {$backend}" . PHP_EOL;
+        
+        // multi select
+        $backends = $this->choice('favourite language',
+        ['PHP','Python','JS'],
+        $default = 1,
+        $attempts =3,
+        $multiple =True);
+        var_dump($backends) . PHP_EOL;
+
         $greeting = ($this->option('greeting')) ? $this->option('greeting') : 'no options';
         echo 'This is option: '. $greeting . PHP_EOL;
         $boo = ($this->option('boo')) ? $this->option('boo') : 'no boo' ;
