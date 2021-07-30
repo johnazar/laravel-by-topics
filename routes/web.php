@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Azarj\mypackage\Hello;
 use Illuminate\Support\Facades\Log;
+// realtime Facades
+// use Facades\Azarj\mypackage\Hello;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,5 +25,11 @@ Route::get('/', function () {
     // echo $hello->hi();
     // check loaded services
     // dd(app());
-    // return view('welcome');
+    
+    // realtime Facades
+    // echo Hello::hi();
+    
+    
+    
+    return view('welcome');
 });
