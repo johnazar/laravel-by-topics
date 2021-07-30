@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Azarj\mypackage\Hello;
-
+use Illuminate\Support\Facades\Log;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,11 +15,12 @@ use Azarj\mypackage\Hello;
 */
 
 Route::get('/', function () {
+    // load time
     define('LARAVEL_END', microtime(true));
+    Log::channel('mylogchannel')->info("Load time ".LARAVEL_END - LARAVEL_START);
+    // echo LARAVEL_END - LARAVEL_START;
     // $hello = new Hello();
     // echo $hello->hi();
-    // load time
-    // echo LARAVEL_END - LARAVEL_START;
     // check loaded services
     // dd(app());
     // return view('welcome');
