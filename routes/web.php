@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\PayOrderController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,7 @@ Route::get('/', function () {
 });
 
 Route::get('/charge',[PayOrderController::class,'store']);
+Route::get('/channels',[ChannelController::class,'index']);
 
 Route::get('/search/{search}', function ($search) {
     return $search;
@@ -50,6 +52,7 @@ Route::get('/users/{user}', [User::class, 'show'])
         ->missing(function (Request $request) {
             return Redirect::route('user.index');
         });
+
 
 Route::fallback(function () {
     //
