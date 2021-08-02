@@ -65,6 +65,16 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function configureRateLimiting()
     {
+        /* 
+        * limit access to the route to 100 times per minute per authenticated user ID
+        * or 10 times per minute per IP address for guests
+        */
+        RateLimiter::for('uploads', function (Request $request) {
+            return $request->user()
+                        ? Limit::perMinute(100)->by($request->user()->id)
+                        : Limit::perMinute(10)->by($request->ip()); 
+        });
+        
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
