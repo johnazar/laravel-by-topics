@@ -9,9 +9,6 @@ class ChannelController extends Controller
 {
     public function index()
     {
-        $channels = Channel::all();
-        // ddd($channels);
-        return view('channel.index',compact('channels'));
-
+        return view('channel.index');
     }
 }

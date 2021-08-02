@@ -52,7 +52,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // shared data accross all views - not good - using db
+        // shared data across all views - not good - using db
         \View::share('channel',Channel::orderBy('name')->get());
+
+        // a better way to share data
+        // \View::composer(['post.create','channel.index'], function ($view) {
+        //     $view->with('channels',Channel::orderBy('name')->get());
+        // });
+    
+        // a better way to share data with wildcard
+        \View::composer(['post.*','channel.*'], function ($view) {
+            $view->with('channels',Channel::orderBy('name')->get());
+        });
     }
 }
