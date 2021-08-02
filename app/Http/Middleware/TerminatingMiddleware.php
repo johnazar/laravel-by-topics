@@ -12,10 +12,23 @@ class TerminatingMiddleware
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
+     * @param  string  $role
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    
+    public function handle(Request $request, Closure $next, $role)
     {
+        if (! $request->user()->hasRole($role)) {
+            // Redirect...
+        }
+
+        /* 
+        * add to rout
+        * Route::put('/post/{id}', function ($id) {
+        * //
+        * })->middleware('role:editor');
+        */
+
         return $next($request);
     }
 
