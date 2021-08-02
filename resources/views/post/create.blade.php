@@ -8,7 +8,9 @@
 </head>
 <body>
     <form action="#" method="post">
-        @include('partials.channels.dropdown')
+        @include('partials.channels.dropdown',[
+            'field'=>'my_channels'
+        ])
     </form>
 </body>
 </html>
