@@ -2,7 +2,8 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
+use Illuminate\Support\Facades\Cache;
 
 class ExampleTest extends TestCase
 {
@@ -15,4 +16,20 @@ class ExampleTest extends TestCase
     {
         $this->assertTrue(true);
     }
+    /**
+     * A basic functional test example.
+     *
+     * @return void
+     */
+    public function testBasicExample()
+    {
+        Cache::shouldReceive('get')
+            ->with('key')
+            ->andReturn('value');
+
+        $response = $this->get('/cache');
+
+        $response->assertSee('value');
+    }
+    
 }
