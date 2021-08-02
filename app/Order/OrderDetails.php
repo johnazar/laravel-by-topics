@@ -1,12 +1,12 @@
 <?php
 namespace App\Order;
 
-use App\Billing\PaymentGatway;
+use App\Billing\PaymentGatewayContract;
 
 class OrderDetails
 {
     private $paymentGatway;
-    public function __construct(PaymentGatway $paymentGatway)
+    public function __construct(PaymentGatewayContract $paymentGatway)
     {
         $this->paymentGatway = $paymentGatway;
     }
