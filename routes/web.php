@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PayOrderController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Azarj\mypackage\Hello;
@@ -36,6 +37,8 @@ Route::get('/', function () {
     
     return view('welcome');
 });
+
+Route::get('/charge',[PayOrderController::class,'store']);
 
 Route::get('/search/{search}', function ($search) {
     return $search;
