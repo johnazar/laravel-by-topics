@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Billing\PaymentGatway;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\TerminatingMiddleware;
 
@@ -32,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(TerminatingMiddleware::class);
+        $this->app->bind(PaymentGatway::class, function($app){
+            return new PaymentGatway('usd');
+        });
     }
 
     /**
