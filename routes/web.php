@@ -33,3 +33,7 @@ Route::get('/', function () {
     
     return view('welcome');
 });
+
+Route::get('/search/{search}', function ($search) {
+    return $search;
+})->where('search', '.*');
