@@ -7,6 +7,8 @@ use App\Billing\BankPaymentGateway;
 use App\Billing\CreditPaymentGateway;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\TerminatingMiddleware;
+use App\Models\Channel;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -50,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // shared data accross all views - not good - using db
+        \View::share('channel',Channel::orderBy('name')->get());
     }
 }

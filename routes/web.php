@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\PayOrderController;
+use App\Http\Controllers\PostController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Azarj\mypackage\Hello;
@@ -41,6 +42,7 @@ Route::get('/', function () {
 
 Route::get('/charge',[PayOrderController::class,'store']);
 Route::get('/channels',[ChannelController::class,'index']);
+Route::get('/post/create', [PostController::class,'create']);
 
 Route::get('/search/{search}', function ($search) {
     return $search;
