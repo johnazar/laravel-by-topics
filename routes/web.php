@@ -47,3 +47,7 @@ Route::get('/users/{user}', [User::class, 'show'])
         ->missing(function (Request $request) {
             return Redirect::route('user.index');
         });
+
+Route::fallback(function () {
+    //
+});

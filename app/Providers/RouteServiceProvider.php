@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+
+use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -35,7 +37,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Global Constraints
         Route::pattern('id', '[0-9]+');
+
+        // Customizing The Resolution Logic
+        Route::bind('user', function ($value) {
+            return User::where('name', $value)->firstOrFail();
+        });
         $this->configureRateLimiting();
 
         $this->routes(function () {
