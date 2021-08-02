@@ -8,12 +8,7 @@
 </head>
 <body>
     <form action="#" method="post">
-        <select name="" id="">
-            @foreach ($channels as $channel)
-            <option value="{{$channel->id}}">{{$channel->name}}</option>
-                
-            @endforeach
-        </select>
+        @include('partials.channels.dropdown')
     </form>
 </body>
 </html>

@@ -67,6 +67,6 @@ class AppServiceProvider extends ServiceProvider
         // });
 
         // using view composer
-        \View::composer(['post.*','channel.*'],ChannelsComposer::class);
+        \View::composer(['partials.channels.*'],ChannelsComposer::class);
     }
 }
