@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(TerminatingMiddleware::class);
-        $this->app->bind(PaymentGatway::class, function($app){
+        $this->app->singleton(PaymentGatway::class, function($app){
             return new PaymentGatway('usd');
         });
     }
