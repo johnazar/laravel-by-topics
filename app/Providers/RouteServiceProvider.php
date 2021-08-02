@@ -37,6 +37,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        // Localizing Resource URIs
+        Route::resourceVerbs([
+            'create' => 'crear',
+            'edit' => 'editar',
+        ]);
+
         // Global Constraints
         Route::pattern('id', '[0-9]+');
 
