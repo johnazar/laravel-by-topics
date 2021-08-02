@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Azarj\mypackage\Hello;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 // realtime Facades
 // use Facades\Azarj\mypackage\Hello;
 /*
@@ -37,3 +40,10 @@ Route::get('/', function () {
 Route::get('/search/{search}', function ($search) {
     return $search;
 })->where('search', '.*');
+Route::get('/users/{user}', [User::class, 'show'])->name('user.index');
+
+Route::get('/users/{user}', [User::class, 'show'])
+        ->name('user.view')
+        ->missing(function (Request $request) {
+            return Redirect::route('user.index');
+        });
