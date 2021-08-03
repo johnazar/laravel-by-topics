@@ -9,6 +9,7 @@ use Azarj\mypackage\Hello;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Cookie;
 // realtime Facades
 // use Facades\Azarj\mypackage\Hello;
 /*
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 Route::get('/', function () {
+    Cookie::queue('cookiesNotEncrypted', 'theRealValue', 60);
+    Cookie::queue('cookiesEncrypted', 'theRealValue', 60);
     // load time
     define('LARAVEL_END', microtime(true));
     Log::channel('mylogchannel')->info("Load time ".LARAVEL_END - LARAVEL_START);
