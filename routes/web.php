@@ -28,6 +28,7 @@ Route::get('/{local}', function () {
     Cookie::queue('cookiesEncrypted', 'theRealValue', 60);
     // load time
     define('LARAVEL_END', microtime(true));
+    Log::info("Load time ".LARAVEL_END - LARAVEL_START);
     Log::channel('mylogchannel')->info("Load time ".LARAVEL_END - LARAVEL_START);
     // echo LARAVEL_END - LARAVEL_START;
     // $hello = new Hello();

@@ -3,6 +3,7 @@
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
+use App\Logging\CustomFormatter;
 
 return [
 
@@ -46,8 +47,10 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
         ],
+        // CustomLogChannel
         'mylogchannel' => [
             'driver' => 'single',
+            'tap'=>[CustomFormatter::class],
             'path' => storage_path('logs/mylog.log'),
             'level' => env('LOG_LEVEL', 'debug'),
         ],
