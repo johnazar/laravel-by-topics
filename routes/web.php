@@ -49,7 +49,7 @@ Route::get('/users/{user}', [User::class, 'show'])
         ->missing(function (Request $request) {
             return Redirect::route('user.index');
         });
-Route::get('/{local}', function () {
+Route::get('/{local?}', function () {
     Cookie::queue('cookiesNotEncrypted', 'theRealValue', 60);
     Cookie::queue('cookiesEncrypted', 'theRealValue', 60);
     // load time

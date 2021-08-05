@@ -10,6 +10,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\TerminatingMiddleware;
 use App\Http\View\Composer\ChannelsComposer;
 use App\Models\Channel;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -54,6 +55,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::directive('mydatetimeformat', function ($expression) {
+            return "<?php echo ($expression)->format('d/m/Y H:i'); ?>";
+        });
         // shared data across all views - not good - using db
         // \View::share('channel',Channel::orderBy('name')->get());
 
