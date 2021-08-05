@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\MyFacades\PostCardSendingService;
 use App\Billing\PaymentGatewayContract;
 use App\Billing\BankPaymentGateway;
 use App\Billing\CreditPaymentGateway;
@@ -9,7 +10,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\TerminatingMiddleware;
 use App\Http\View\Composer\ChannelsComposer;
 use App\Models\Channel;
-
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -67,6 +68,11 @@ class AppServiceProvider extends ServiceProvider
         // });
 
         // using view composer
-        \View::composer(['partials.channels.*'],ChannelsComposer::class);
+        View::composer(['partials.channels.*'],ChannelsComposer::class);
+
+        // Facade
+        $this->app->singleton('Postcard',function($app){
+            return new PostCardSendingService('US','10','12');
+        });
     }
 }
