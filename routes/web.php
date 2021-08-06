@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Azarj\mypackage\Hello;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Cookie;
 use PhpParser\Node\Expr\FuncCall;
@@ -49,7 +50,12 @@ Route::get('/users/{user}', [User::class, 'show'])
         ->missing(function (Request $request) {
             return Redirect::route('user.index');
         });
-Route::get('/{local?}', function () {
+Route::get('/{locale?}', function ($locale) {
+    // Configuring The Locale
+    if (! in_array($locale, ['en', 'es', 'ru'])) {
+        abort(400);
+    }
+    App::setLocale($locale);
     Cookie::queue('cookiesNotEncrypted', 'theRealValue', 60);
     Cookie::queue('cookiesEncrypted', 'theRealValue', 60);
     // load time
@@ -57,16 +63,15 @@ Route::get('/{local?}', function () {
     Log::info("Load time ".LARAVEL_END - LARAVEL_START);
     Log::channel('mylogchannel')->info("Load time ".LARAVEL_END - LARAVEL_START);
     // echo LARAVEL_END - LARAVEL_START;
+    
     // $hello = new Hello();
     // echo $hello->hi();
+
     // check loaded services
     // dd(app());
-    
+
     // realtime Facades
     // echo Hello::hi();
-    
-    
-    
     return view('welcome');
 });
 
