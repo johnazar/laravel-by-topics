@@ -50,9 +50,9 @@ Route::get('/users/{user}', [User::class, 'show'])
         ->missing(function (Request $request) {
             return Redirect::route('user.index');
         });
-Route::get('/{locale?}', function ($locale) {
+Route::get('/{locale?}', function ($locale = null) {
     // Configuring The Locale
-    if (! in_array($locale, ['en', 'es', 'ru'])) {
+    if (! in_array($locale, ['en', 'es', 'ru']) && !is_null($locale)) {
         abort(400);
     }
     App::setLocale($locale);
@@ -63,7 +63,7 @@ Route::get('/{locale?}', function ($locale) {
     Log::info("Load time ".LARAVEL_END - LARAVEL_START);
     Log::channel('mylogchannel')->info("Load time ".LARAVEL_END - LARAVEL_START);
     // echo LARAVEL_END - LARAVEL_START;
-    
+
     // $hello = new Hello();
     // echo $hello->hi();
 

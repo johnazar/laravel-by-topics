@@ -58,6 +58,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('mydatetimeformat', function ($expression) {
             return "<?php echo ($expression)->format('d/m/Y H:i'); ?>";
         });
+        Blade::if('locale', function ($value) {
+            return config('app.locale') === $value;
+        });
         // shared data across all views - not good - using db
         // \View::share('channel',Channel::orderBy('name')->get());
 
