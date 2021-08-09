@@ -29,4 +29,7 @@ Build custom package [link](https://github.com/johnazar/laravel-by-topics/tree/m
 Custom view composer to share data in all views [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Providers/ViewTestServiceProvider.php)
 
 ## Blade
-Create custom blade directive [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Providers/AppServiceProvider.php) 
+Create custom blade directive [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Providers/AppServiceProvider.php)
+
+## Starter Kit
+Laravel Breeze [Docs](https://laravel.com/docs/8.x/starter-kits#laravel-breeze)
