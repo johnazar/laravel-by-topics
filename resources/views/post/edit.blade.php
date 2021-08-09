@@ -11,7 +11,7 @@
                     <form action="{{route('posts.store')}}" method="post" class="space-y-6">
                         @csrf
                         <label for="title">{{__('Post title')}}</label>
-                        <input type="text" name="title" id="post_title" value="{{old('title')}}" class="w-full">
+                        <input type="text" name="title" id="post_title" value="{{$post->title}}" class="w-full">
                         <x-button>{{__('Create')}}</x-button>
                     </form>
                 </div>
