@@ -13,10 +13,12 @@ use Azarj\mypackage\Hello;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Cookie;
 use PhpParser\Node\Expr\FuncCall;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,10 @@ require __DIR__.'/auth.php';
 Route::prefix('/setting')->middleware(['auth'])->group(function () {
     Route::get('/', [SettingController::class,'index'])->name('settings.index');
     Route::resource('posts', PostController::class);
+    // Macros Test
+    Route::get('/macro', function () {
+        return Response::errorJson('went wrong');
+    });
 });
 Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
     Route::get('/', [DashController::class,'index'])->name('dashboard');

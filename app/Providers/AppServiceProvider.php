@@ -10,8 +10,12 @@ use Illuminate\Support\ServiceProvider;
 use App\Http\Middleware\TerminatingMiddleware;
 use App\Http\View\Composer\ChannelsComposer;
 use App\Models\Channel;
+use Illuminate\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
+use App\Mixins\StrMixins;
+use App\Mixins\ResponseMixins;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -61,6 +65,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('locale', function ($value) {
             return config('app.locale') === $value;
         });
+        // Macros
+        Str::mixin(new (StrMixins::class));
+        ResponseFactory::mixin(new (ResponseMixins::class));
+
         // shared data across all views - not good - using db
         // \View::share('channel',Channel::orderBy('name')->get());
 
