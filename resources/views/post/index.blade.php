@@ -18,7 +18,9 @@
                     <ul class="space-y-2">
                         @foreach ($posts as $post)
                         <li>
-                            {{$post->title}} 
+                            <a href="{{route('posts.edit',$post->id)}}">
+                                {{$post->title}} 
+                            </a>
                             <form action="{{route('posts.destroy',$post->id)}}" method="post" class="inline">
                                 @csrf
                                 @method('DELETE')
