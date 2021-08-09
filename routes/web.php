@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\MyFacades\PostCardSendingService;
 use App\MyFacades\Postcard;
 use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\DashController;
 use App\Http\Controllers\PayOrderController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SettingController;
 use App\Models\User;
 use Azarj\mypackage\Hello;
 use Illuminate\Support\Facades\Log;
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Cookie;
 use PhpParser\Node\Expr\FuncCall;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,10 +36,11 @@ require __DIR__.'/auth.php';
 
 
 Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    
+    Route::get('/', [DashController::class,'index'])->name('dashboard');
+});
+Route::prefix('/setting')->middleware(['auth'])->group(function () {
+    Route::get('/', [SettingController::class,'index'])->name('settings.index');
+    Route::resource('posts', PostController::class);
 });
 
 Route::get('/charge',[PayOrderController::class,'store']);
