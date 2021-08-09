@@ -33,3 +33,6 @@ Create custom blade directive [link](https://github.com/johnazar/laravel-by-topi
 
 ## Starter Kit
 Laravel Breeze [Docs](https://laravel.com/docs/8.x/starter-kits#laravel-breeze)
+
+## CRUD
+Posts [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Http/Controllers/PostController.php)
