@@ -29,23 +29,22 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 // Load time
-define('LARAVEL_END', microtime(true));
-Log::info("Load time ".LARAVEL_END - LARAVEL_START);
-Log::channel('mylogchannel')->info("Load time ".LARAVEL_END - LARAVEL_START);
+Log::info("Load time ".microtime(true) - LARAVEL_START);
+Log::channel('mylogchannel')->info("Load time ".microtime(true) - LARAVEL_START);
 require __DIR__.'/auth.php';
 
 
-Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
-    Route::get('/', [DashController::class,'index'])->name('dashboard');
-});
 Route::prefix('/setting')->middleware(['auth'])->group(function () {
     Route::get('/', [SettingController::class,'index'])->name('settings.index');
     Route::resource('posts', PostController::class);
 });
+Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
+    Route::get('/', [DashController::class,'index'])->name('dashboard');
+});
 
 Route::get('/charge',[PayOrderController::class,'store']);
 Route::get('/channels',[ChannelController::class,'index']);
-Route::get('/post/create', [PostController::class,'create']);
+
 
 
 

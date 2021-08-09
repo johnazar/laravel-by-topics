@@ -40,8 +40,8 @@ class RouteServiceProvider extends ServiceProvider
 
         // Localizing Resource URIs
         Route::resourceVerbs([
-            'create' => 'crear',
-            'edit' => 'editar',
+            // 'create' => 'crear',
+            // 'edit' => 'editar',
         ]);
 
         // Global Constraints
