@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory()->create([
-            'password'=>Hash::make('password')
+            'email'=>'test@test.com',
+            'password'=>Hash::make('Pass$word')
         ]);
         \App\Models\Channel::factory(20)->create();
         \App\Models\Post::factory(20)->create();
