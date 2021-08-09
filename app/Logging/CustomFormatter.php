@@ -3,6 +3,7 @@ namespace App\Logging;
 
 use Monolog\Formatter\LineFormatter;
 
+// used for cutomizing log in specific channels
 class CustomFormatter
 {
     public function __invoke($logger)
