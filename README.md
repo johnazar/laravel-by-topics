@@ -14,6 +14,9 @@ Implementation of example from official docs [Docs](https://laravel.com/docs/8.x
 ## Log
 Create custom log channel, with custom formatting  [link](https://github.com/johnazar/laravel-by-topics/tree/main/app)
 
+## Artisan Console
+Write custom artisan commands [link](https://github.com/johnazar/laravel-by-topics/tree/main/app/Console/JohnCommands)
+Create custom stubs - boilerplate [link](https://github.com/johnazar/laravel-by-topics/tree/main/stubs)
 ## Contract
 Create custom interface for billing  [link](https://github.com/johnazar/laravel-by-topics/tree/main/app/Billing)
 ## Docker
@@ -24,3 +27,6 @@ Build custom package [link](https://github.com/johnazar/laravel-by-topics/tree/m
 
 ## View Composers
 Custom view composer to share data in all views [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Providers/ViewTestServiceProvider.php)
+
+## Blade
+Create custom blade directive [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Providers/AppServiceProvider.php) 
