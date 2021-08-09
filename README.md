@@ -7,6 +7,20 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Topics
-# Log
-create custom log channel, with custom formatting  [link](https://github.com/johnazar/laravel-by-topics/tree/main/app)
+# Topics
+
+## Polymorphic Relationships
+Implementation of example from official docs [Docs](https://laravel.com/docs/8.x/eloquent-relationships#polymorphic-relationships)
+## Log
+Create custom log channel, with custom formatting  [link](https://github.com/johnazar/laravel-by-topics/tree/main/app)
+
+## Contract
+Create custom interface for billing  [link](https://github.com/johnazar/laravel-by-topics/tree/main/app/Billing)
+## Docker
+Implementation of laravel sail [link](https://github.com/johnazar/laravel-by-topics/tree/main/docker)
+
+## Packages
+Build custom package [link](https://github.com/johnazar/laravel-by-topics/tree/main/app/Packages/Azarj/mypackage)
+
+## View Composers
+Custom view composer to share data in all views [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Providers/ViewTestServiceProvider.php)
