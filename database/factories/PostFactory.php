@@ -24,6 +24,7 @@ class PostFactory extends Factory
     {
         return [
             'title'=>$this->faker->sentence(),
+            'published_at'=>$this->faker->datetime(),
         ];
     }
 }

@@ -21,6 +21,11 @@
                             <a href="{{route('posts.edit',$post->id)}}">
                                 {{$post->title}} 
                             </a>
+                            @if ($post->published_at)
+                            <span class="text-green-500">published</span>
+                            @else
+                            <span class="text-red-500">not published</span>
+                            @endif
                             <form action="{{route('posts.destroy',$post->id)}}" method="post" class="inline">
                                 @csrf
                                 @method('DELETE')
@@ -31,6 +36,7 @@
                         </li>
                         @endforeach
                     </ul>
+                    {{$posts->appends(request()->input())->links()}}
                 </div>
             </div>
         </div>
