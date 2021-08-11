@@ -21,8 +21,17 @@
                 </div>
             </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                {{\Illuminate\Support\Str::partNumber('asdas')}}
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <p>
+                        Macros demo: <br>
+                        input: asdas <br>
+                        output: {{\Illuminate\Support\Str::partNumber('asdas')}}
+
+                    </p>
+
+                </div>
             </div>
+
         </div>
     </div>
 </x-app-layout>
