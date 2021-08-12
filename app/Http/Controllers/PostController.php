@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostUpdated;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -83,6 +84,7 @@ class PostController extends Controller
             'title'=>['required','min:7','max:255'],
         ]);
         $post->update($val);
+        event(new PostUpdated($post));
         return redirect()->action([PostController::class, 'index']);
     }
 

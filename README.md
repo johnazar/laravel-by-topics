@@ -36,3 +36,7 @@ Laravel Breeze [Docs](https://laravel.com/docs/8.x/starter-kits#laravel-breeze)
 
 ## CRUD
 Posts [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Http/Controllers/PostController.php)
+
+## Events & Listeners
+Event PostUpdated
+Listeners: Send mail to admin , Send Slack notification (dummy implementation)

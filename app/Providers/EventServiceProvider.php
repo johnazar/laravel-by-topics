@@ -18,6 +18,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        \App\Events\PostUpdated::class =>[
+            \App\Listeners\SendEmailPostUpdated::class,
+            \App\Listeners\SendSlackNotification::class
+        ]
     ];
 
     /**
@@ -37,7 +41,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function shouldDiscoverEvents()
     {
-    return true;
+    return false;
     }
 
     
