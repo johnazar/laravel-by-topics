@@ -29,4 +29,16 @@ class EventServiceProvider extends ServiceProvider
     {
         //
     }
+    /**
+     * Determine if events and listeners should be automatically discovered.
+     * By default, all listeners within your application's Listeners directory will be scanned
+     *
+     * @return bool
+     */
+    public function shouldDiscoverEvents()
+    {
+    return true;
+    }
+
+    
 }
