@@ -65,6 +65,14 @@ Route::get('/{locale?}', function ($locale = null) {
     return view('welcome');
 });
 
+Route::get('/postcard',function(){
+    $postcardservice = new PostCardSendingService('US','10','12');
+    dd($postcardservice->hey('ok','test@test.com'));
+});
+Route::get('/postcardfacade',function(){
+    dd(Postcard::hey('ok','test@test.com'));
+});
+
 Route::fallback(function () {
     //
 });
