@@ -40,7 +40,7 @@ Posts [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Http/Co
 ## Events & Listeners
 Event PostUpdated
 Listeners: 
-Send mail to admin , 
+Send mail to admin
 Send Slack notification (dummy implementation)
 [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Providers/EventServiceProvider.php)
 
