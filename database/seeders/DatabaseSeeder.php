@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\Channel::factory(20)->create();
         \App\Models\Post::factory(20)->create();
+        \App\Models\File::factory(20)->create();
     }
 }

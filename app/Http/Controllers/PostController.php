@@ -84,6 +84,7 @@ class PostController extends Controller
             'title'=>['required','min:7','max:255'],
         ]);
         $post->update($val);
+        $post->files()->sync($request['files']);
         event(new PostUpdated($post));
         return redirect()->action([PostController::class, 'index']);
     }

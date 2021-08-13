@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{__('Create')}}
+            {{__('Edit')}}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -13,7 +13,16 @@
                         @method('PUT')
                         <label for="title">{{__('Post title')}}</label>
                         <input type="text" name="title" id="post_title" value="{{$post->title}}" class="w-full">
-                        <x-button>{{__('Create')}}</x-button>
+                        <select multiple name="files[]">Attachments
+                        @foreach (\App\Models\File::all() as $file)
+                            <option value="{{$file->id}}" 
+                                @if ($post->files()->pluck('id')->contains($file->id))
+                                    selected
+                                @endif
+                                >{{$file->uri}}</option>
+                        @endforeach
+                        </select>
+                        <x-button>{{__('Save')}}</x-button>
                     </form>
                 </div>
             </div>

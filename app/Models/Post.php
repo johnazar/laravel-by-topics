@@ -42,6 +42,14 @@ class Post extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
+    /**
+     * Get all of the files for the post. Many To Many (Polymorphic)
+     */
+    public function files()
+    {
+        return $this->morphToMany(File::class, 'fileable');
+    }
+
     public static function allPosts()
     {
         return $posts = app(Pipeline::class)
