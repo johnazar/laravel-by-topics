@@ -14,7 +14,8 @@ class FileController extends Controller
      */
     public function index()
     {
-        //
+        $files = File::paginate(10);
+        return view('file.index',compact('files'));
     }
 
     /**
@@ -24,7 +25,7 @@ class FileController extends Controller
      */
     public function create()
     {
-        //
+        return view('file.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $val = $request->validate([
+            'uri'=>['required','min:7','max:255'],
+        ]);
+        File::Create($val);
+        return redirect()->action([FileController::class, 'index']);
     }
 
     /**
@@ -57,7 +62,7 @@ class FileController extends Controller
      */
     public function edit(File $file)
     {
-        //
+        return view('file.edit',compact('file'));
     }
 
     /**
@@ -69,7 +74,11 @@ class FileController extends Controller
      */
     public function update(Request $request, File $file)
     {
-        //
+        $val = $request->validate([
+            'uri'=>['required','min:7','max:255'],
+        ]);
+        $file->update($val);
+        return redirect()->action([FileController::class, 'index']);
     }
 
     /**
@@ -80,6 +89,7 @@ class FileController extends Controller
      */
     public function destroy(File $file)
     {
-        //
+        $file->delete();
+        return redirect()->action([FileController::class, 'index']);
     }
 }

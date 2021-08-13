@@ -7,6 +7,7 @@ use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\PayOrderController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\SettingController;
 use App\Models\User;
 use Azarj\mypackage\Hello;
@@ -39,6 +40,7 @@ require __DIR__.'/auth.php';
 Route::prefix('/setting')->middleware(['auth'])->group(function () {
     Route::get('/', [SettingController::class,'index'])->name('settings.index');
     Route::resource('posts', PostController::class);
+    Route::resource('files', FileController::class);
     // Macros Test
     Route::get('/macro', function () {
         return Response::errorJson('went wrong');

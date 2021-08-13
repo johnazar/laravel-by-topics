@@ -15,6 +15,9 @@
                     <a href="{{route('posts.index')}}">
                         <x-button>Posts</x-button>
                     </a>
+                    <a href="{{route('files.index')}}">
+                        <x-button>Files</x-button>
+                    </a>
                     <a href="">
                         <x-button>Tags</x-button>
                     </a>
