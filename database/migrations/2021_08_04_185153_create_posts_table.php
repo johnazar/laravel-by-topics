@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->datetime('published_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
