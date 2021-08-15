@@ -42,6 +42,42 @@ class Post extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
+    /**
+     * Get all of the tags for the post. Many To Many (Polymorphic)
+     */
+    public static function published()
+    {
+        return $posts = app(Pipeline::class)
+        ->send(Post::query())
+        ->through(
+            [
+                \App\QueryFilters\Published::class,
+
+            ]
+        )
+        ->thenReturn()
+        // ->get()
+        ->paginate(5);
+        // max count wont work wih pagination
+    }
+    /**
+     * Get all of the tags for the post. Many To Many (Polymorphic)
+     */
+    public static function draft()
+    {
+        return $posts = app(Pipeline::class)
+        ->send(Post::query())
+        ->through(
+            [
+                \App\QueryFilters\Draft::class,
+
+            ]
+        )
+        ->thenReturn()
+        // ->get()
+        ->paginate(5);
+        // max count wont work wih pagination
+    }
 
     /**
      * Get all of the files for the post. Many To Many (Polymorphic)

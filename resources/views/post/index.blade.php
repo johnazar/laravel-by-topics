@@ -39,10 +39,10 @@
                     <div class="p-6">
                         <h2 class="font-bold">Published</h2>
                         <ul class="space-y-2">
-                            @foreach ($posts->whereNotNull('published_at') as $post)
+                            @foreach ($published_posts as $post)
                             <li>
                                 <a href="{{route('posts.edit',$post->id)}}">
-                                    {{$post->title}} 
+                                    {{$post->title}}
                                 </a>
                                 <form action="{{route('posts.destroy',$post->id)}}" method="post" class="inline">
                                     @csrf
@@ -58,7 +58,7 @@
                     <div class="p-6">
                         <h2 class="font-bold">Not Published</h2>
                         <ul class="space-y-2">
-                            @foreach ($posts->whereNull('published_at') as $post)
+                            @foreach ($draft_posts as $post)
                             <li>
                                 <a href="{{route('posts.edit',$post->id)}}">
                                     {{$post->title}} 
