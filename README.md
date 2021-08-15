@@ -46,3 +46,7 @@ Send Slack notification (dummy implementation)
 
 ## Files (polymorph)
 File model with relations [link](https://github.com/johnazar/laravel-by-topics/blob/main/app/Models/File.php)
+
+
+## Laravel Debugbar
+Laravel debugbar added [github](https://github.com/barryvdh/laravel-debugbar)
