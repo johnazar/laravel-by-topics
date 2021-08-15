@@ -16,8 +16,14 @@ class PostController extends Controller
      */
     public function index()
     {
-        $published_posts = Post::published();
-        $draft_posts = Post::draft();
+        $posts = Post::all();
+        $published_posts = $posts->whereNotNull('published_at');
+        $draft_posts = $posts->whereNull('published_at');
+        
+        
+        // $published_posts = Post::published();
+        // $published_posts = Post::published();
+        // $draft_posts = Post::draft();
         return view('post.index',compact('published_posts','draft_posts'));
     }
 
