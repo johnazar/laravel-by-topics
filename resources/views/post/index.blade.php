@@ -39,7 +39,7 @@
                     <div class="p-6">
                         <h2 class="font-bold">Published</h2>
                         <ul class="space-y-2">
-                            @foreach ($posts as $post)
+                            @foreach ($posts->whereNotNull('published_at') as $post)
                             <li>
                                 <a href="{{route('posts.edit',$post->id)}}">
                                     {{$post->title}} 
@@ -54,12 +54,11 @@
                             </li>
                             @endforeach
                         </ul>
-                        {{$posts->appends(request()->input())->links()}}
                     </div>
                     <div class="p-6">
                         <h2 class="font-bold">Not Published</h2>
                         <ul class="space-y-2">
-                            @foreach ($posts as $post)
+                            @foreach ($posts->whereNull('published_at') as $post)
                             <li>
                                 <a href="{{route('posts.edit',$post->id)}}">
                                     {{$post->title}} 
@@ -74,7 +73,6 @@
                             </li>
                             @endforeach
                         </ul>
-                        {{$posts->appends(request()->input())->links()}}
                     </div>
                 </div>
             </div>
