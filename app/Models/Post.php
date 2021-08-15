@@ -43,41 +43,26 @@ class Post extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
     /**
-     * Get all of the tags for the post. Many To Many (Polymorphic)
+     * Scope a query to only include published posts.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function published()
+    public function scopePublished($query)
     {
-        return $posts = app(Pipeline::class)
-        ->send(Post::query())
-        ->through(
-            [
-                \App\QueryFilters\Published::class,
-
-            ]
-        )
-        ->thenReturn()
-        // ->get()
-        ->paginate(5);
-        // max count wont work wih pagination
+        return $query->whereNotNull('published_at');
     }
     /**
-     * Get all of the tags for the post. Many To Many (Polymorphic)
+     * Scope a query to only include draft posts.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function draft()
+    public function scopeDraft($query)
     {
-        return $posts = app(Pipeline::class)
-        ->send(Post::query())
-        ->through(
-            [
-                \App\QueryFilters\Draft::class,
-
-            ]
-        )
-        ->thenReturn()
-        // ->get()
-        ->paginate(5);
-        // max count wont work wih pagination
+        return $query->whereNull('published_at');
     }
+
 
     /**
      * Get all of the files for the post. Many To Many (Polymorphic)
