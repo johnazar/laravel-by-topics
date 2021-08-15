@@ -56,7 +56,7 @@ Route::get('/channels',[ChannelController::class,'index']);
 
 
 
-Route::get('/{locale?}', function ($locale = null) {
+Route::get('{locale?}', function ($locale = null) {
     // Configuring The Locale
     if (! in_array($locale, ['en', 'es', 'ru']) && !is_null($locale)) {
         abort(400);

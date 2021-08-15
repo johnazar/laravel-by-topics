@@ -14,29 +14,68 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <ul class="space-y-2">
-                        @foreach ($posts as $post)
-                        <li>
-                            <a href="{{route('posts.edit',$post->id)}}">
-                                {{$post->title}} 
-                            </a>
-                            @if ($post->published_at)
-                            <span class="text-green-500">published</span>
-                            @else
-                            <span class="text-red-500">not published</span>
-                            @endif
-                            <form action="{{route('posts.destroy',$post->id)}}" method="post" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button>
-                                    ❌
-                                </button>
-                            </form>
-                        </li>
-                        @endforeach
-                    </ul>
-                    {{$posts->appends(request()->input())->links()}}
+                <div class="p-6">
+                    <form action="{{route('posts.store')}}" method="post">
+                        @csrf
+                        <label for="title">{{__('Post title')}}</label>
+                        <input type="text" name="title" id="post_title" value="{{old('title')}}" class="w-full">
+                        <label for="files[]" class="block">{{__('Attachments')}}
+                        <select multiple name="files[]" class="block">
+                            @foreach (\App\Models\File::all() as $file)
+                                <option value="{{$file->id}}">{{$file->uri}}</option>
+                            @endforeach
+                            </select>
+                        <x-button class="block">{{__('Add')}}</x-button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6">
+                        <h2 class="font-bold">Published</h2>
+                        <ul class="space-y-2">
+                            @foreach ($posts as $post)
+                            <li>
+                                <a href="{{route('posts.edit',$post->id)}}">
+                                    {{$post->title}} 
+                                </a>
+                                <form action="{{route('posts.destroy',$post->id)}}" method="post" class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button>
+                                        ❌
+                                    </button>
+                                </form>
+                            </li>
+                            @endforeach
+                        </ul>
+                        {{$posts->appends(request()->input())->links()}}
+                    </div>
+                    <div class="p-6">
+                        <h2 class="font-bold">Not Published</h2>
+                        <ul class="space-y-2">
+                            @foreach ($posts as $post)
+                            <li>
+                                <a href="{{route('posts.edit',$post->id)}}">
+                                    {{$post->title}} 
+                                </a>
+                                <form action="{{route('posts.destroy',$post->id)}}" method="post" class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button>
+                                        ❌
+                                    </button>
+                                </form>
+                            </li>
+                            @endforeach
+                        </ul>
+                        {{$posts->appends(request()->input())->links()}}
+                    </div>
                 </div>
             </div>
         </div>
