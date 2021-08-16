@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Events\PostUpdated;
 use App\Models\Post;
+use App\Notifications\PostUpdatedNotification;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -89,7 +90,10 @@ class PostController extends Controller
         ]);
         $post->update($val);
         $post->files()->sync($request['files']);
+        // Event Demo
         event(new PostUpdated($post));
+        // Notification Demo
+        Auth::user()->notify(new PostUpdatedNotification($post));
         return redirect()->action([PostController::class, 'index']);
     }
 

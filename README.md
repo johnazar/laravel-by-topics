@@ -50,3 +50,7 @@ File model with relations [link](https://github.com/johnazar/laravel-by-topics/b
 
 ## Laravel Debugbar
 Laravel debugbar added [github](https://github.com/barryvdh/laravel-debugbar)
+
+
+## Notification
+Database Notifications [Docs](https://laravel.com/docs/8.x/notifications#database-notifications)
