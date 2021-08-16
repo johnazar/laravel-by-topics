@@ -23,6 +23,7 @@ class FileFactory extends Factory
     {
         return [
             'uri'=>$this->faker->imageUrl(),
+            'title'=>$this->faker->word(),
         ];
     }
 }

@@ -9,7 +9,8 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $guarded =[];
+    protected $fillable = ['uri','title'];
+    // protected $guarded =[];
 
     /**
      * Get all of the posts that are assigned this file. Many To Many (Polymorphic)

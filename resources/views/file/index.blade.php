@@ -10,6 +10,20 @@
         </a>
 
     </x-slot>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6">
+                    <form action="{{route('files.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <label for="title">{{__('File title')}}</label>
+                        <input type="file" name="file" id="" class="w-full">
+                        <x-button class="block">{{__('Upload')}}</x-button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -18,9 +32,15 @@
                     <ul class="space-y-2">
                         @foreach ($files as $file)
                         <li>
+                            <span>
+                                <a href="{{storage_path($file->uri)}}">
+                                    📎
+                                </a>
+                            </span>
                             <a href="{{route('files.edit',$file->id)}}">
-                                {{$file->uri}} 
+                                {{$file->title}} 
                             </a>
+                            
                               <form action="{{route('files.destroy',$file->id)}}" method="post" class="inline">
                                 @csrf
                                 @method('DELETE')

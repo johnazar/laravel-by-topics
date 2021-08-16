@@ -14,7 +14,7 @@ class FileController extends Controller
      */
     public function index()
     {
-        $files = File::paginate(10);
+        $files = File::latest()->paginate(10);
         return view('file.index',compact('files'));
     }
 
@@ -37,8 +37,11 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $val = $request->validate([
-            'uri'=>['required','min:7','max:255'],
+            'file'=>['required','min:7','max:5000','mimes:pdf'],
         ]);
+        $val['title'] = $request->file('file')->getClientOriginalName();
+        $val['uri'] = $request->file('file')->store('myfiles');
+        // dd($uri);
         File::Create($val);
         return redirect()->action([FileController::class, 'index']);
     }

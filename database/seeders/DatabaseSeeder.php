@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             'email'=>'test@test.com',
             'password'=>Hash::make('Pass$word')
         ]);
-        \App\Models\Channel::factory(20)->create();
-        \App\Models\Post::factory(20)->create();
-        \App\Models\File::factory(20)->create();
+        \App\Models\Channel::factory(10)->create();
+        \App\Models\Post::factory(10)->create();
+        \App\Models\File::factory(10)->create();
     }
 }
