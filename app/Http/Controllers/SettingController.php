@@ -14,7 +14,7 @@ class SettingController extends Controller
     public function markNotification(Request $request)
     {
         auth()->user()
-        ->unreadNotifications
+        ->notifications->whereNull('read_at')
         ->when($request->input('id'), function ($query) use ($request) {
             return $query->where('id', $request->input('id'));
         })
