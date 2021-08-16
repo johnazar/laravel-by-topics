@@ -41,6 +41,8 @@ Route::prefix('/setting')->middleware(['auth'])->group(function () {
     Route::get('/', [SettingController::class,'index'])->name('settings.index');
     Route::resource('posts', PostController::class);
     Route::resource('files', FileController::class);
+    // This should be under 'auth' middleware group
+    Route::post('/mark-as-read', [SettingController::class,'markNotification'])->name('markNotification');
     // Macros Test
     Route::get('/macro', function () {
         return Response::errorJson('went wrong');
