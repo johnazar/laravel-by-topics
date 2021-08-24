@@ -38,10 +38,14 @@ class AddChannelCommand extends Command
      */
     public function handle()
     {
-        $channel = Channel::create([
-            'name'=>$this->argument('name')
-        ]);
-        $this->info('Added:' . $channel->name);
-        return 0;
+
+        if($this->confirm('Add channel '.$this->argument('name').' ?')){
+            $channel = Channel::create([
+                'name'=>$this->argument('name')
+            ]);
+    
+            $this->info('Added:' . $channel->name);
+        }
+        $this->warn('No channel added');
     }
 }
