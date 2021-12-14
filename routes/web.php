@@ -32,8 +32,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 // Load time
-Log::info("Load time ".microtime(true) - LARAVEL_START);
-Log::channel('mylogchannel')->info("Load time ".microtime(true) - LARAVEL_START);
+// Log::info("Load time ".microtime(true) - LARAVEL_START);
+// Log::channel('mylogchannel')->info("Load time ".microtime(true) - LARAVEL_START);
 require __DIR__.'/auth.php';
 
 
